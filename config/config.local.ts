@@ -12,7 +12,13 @@ export default () => {
     operatorsAliases: false,
     define: {
       timestamps: false,
-    }
+    },
+  };
+  config.session = {
+    key: 'EGG_SESS',
+    maxAge: 24 * 3600 * 1000, // 1 天
+    httpOnly: true,
+    encrypt: true,
   };
   return config;
 };

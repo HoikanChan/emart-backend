@@ -38,6 +38,7 @@
     "egg-cors": "^2.1.2",
     "egg-mock": "^3.16.0",
     "egg-sequelize": "^4.2.0",
+    "egg-session": "^3.1.0",
     "egg-ts-helper": "^1.11.0",
     "js-sha256": "^0.9.0",
     "mysql2": "^1.6.4",

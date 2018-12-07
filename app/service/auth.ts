@@ -1,8 +1,6 @@
 import { Service } from 'egg';
 const uuid = require('uuid/v4');
 const sha256 = require('js-sha256');
-
-
 /**
  * Test Service
  */
@@ -37,7 +35,7 @@ export default class AuthService extends Service {
     if (userInDb.password !== user.password) {
       return this.ctx.returnError('密码错误');
     }
-    return this.ctx.returnSuccess('登录成功', userInDb);
+    return userInDb;
   }
   private async checkRegistered(mobile: string) {
 

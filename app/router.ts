@@ -2,7 +2,7 @@ import { Application } from 'egg';
 
 export default (app: Application) => {
   const { controller, router } = app;
-  const {auth, goods} = controller;
+  const {auth, goods, cart} = controller;
 
   router.get('/', controller.home.index);
   // login
@@ -12,4 +12,7 @@ export default (app: Application) => {
   router.get('/goods/list', goods.list);
   router.get('/category/list', goods.category);
   router.get('/goods/details', goods.detail);
+  // cart
+  router.post('/cart/add', cart.add);
+  router.post('/cart/getCart', cart.list);
 };

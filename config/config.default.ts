@@ -12,7 +12,7 @@ export default (appInfo: EggAppInfo) => {
 
   // add your special config in here
   const bizConfig = {
-    sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`
+    sourceUrl: `https://github.com/eggjs/examples/tree/master/${appInfo.name}`,
   };
   // 关闭安全威胁csrf的防范
   config.security = {
@@ -23,9 +23,13 @@ export default (appInfo: EggAppInfo) => {
       },
     },
   };
+  config.middleware = ['errorHandler', 'authorization'];
+  // authorization's white list
+  config.authWhiteList = [/\/user\/login/, /\/user\/register/];
+
   // the return config will combines to EggAppConfig
   return {
     ...config,
-    ...bizConfig
+    ...bizConfig,
   };
 };

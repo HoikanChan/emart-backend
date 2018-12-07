@@ -17,6 +17,10 @@ export default class GoodsService extends Service {
     const info = await this.ctx.model.Goods.findOne({where: {id: goodsId}});
     const productList = await this.ctx.model.Product.findAll({where: {goodsId}});
     const specificationList = await this.ctx.model.Spec.findAll({where: {goodsId}});
+    for (let spec of specificationList) {
+      const valueList = await this.ctx.model.SpecValue.findAll({where: {specificationId: spec.id}});
+      spec.dataValues.valueList = valueList;
+    }
     return this.ctx.returnSuccess('查询成功', {info, productList, specificationList});
   }
 }
