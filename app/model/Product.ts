@@ -17,6 +17,8 @@ module.exports = app => {
   }, {
     freezeTableName: true, // 不自动将表名添加复数
   });
-
+  Product.associate = () => {
+    app.model.Product.hasMany(app.model.Cart, { as: 'carts' });
+  };
   return Product;
 };

@@ -13,6 +13,8 @@ module.exports = app => {
   }, {
     freezeTableName: true, // 不自动将表名添加复数
   });
-
+  Cart.associate = () => {
+    app.model.Cart.belongsTo(app.model.Product, { as: 'product', foreignKey: 'productId' });
+  };
   return Cart;
 };
