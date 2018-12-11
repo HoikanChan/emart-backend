@@ -2,7 +2,7 @@ import { Application } from 'egg';
 
 export default (app: Application) => {
   const { controller, router } = app;
-  const {auth, goods, cart, address} = controller;
+  const {auth, goods, cart, address, order} = controller;
 
   router.get('/', controller.home.index);
   // login
@@ -21,6 +21,9 @@ export default (app: Application) => {
   router.post('/cart/checkout', cart.checkout);
   // address
   router.get('/address/list', address.list);
-  // router.get('/address/delete', address.delete);
+  router.get('/address/delete', address.delete);
   router.post('/address/save', address.save);
+  // oreder
+  router.post('/order/submit', order.submit);
+  router.get('/order/list', order.list);
 };

@@ -6,6 +6,7 @@ import ExportAddress from '../../../app/model/address';
 import ExportCart from '../../../app/model/cart';
 import ExportCategory from '../../../app/model/category';
 import ExportGoods from '../../../app/model/goods';
+import ExportOrder from '../../../app/model/order';
 import ExportProduct from '../../../app/model/product';
 import ExportSpec from '../../../app/model/spec';
 import ExportSpecValue from '../../../app/model/specValue';
@@ -17,6 +18,7 @@ declare module 'sequelize' {
     Cart: ReturnType<typeof ExportCart>;
     Category: ReturnType<typeof ExportCategory>;
     Goods: ReturnType<typeof ExportGoods>;
+    Order: ReturnType<typeof ExportOrder>;
     Product: ReturnType<typeof ExportProduct>;
     Spec: ReturnType<typeof ExportSpec>;
     SpecValue: ReturnType<typeof ExportSpecValue>;

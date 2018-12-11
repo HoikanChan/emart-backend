@@ -7,6 +7,7 @@ import ExportAuth from '../../../app/controller/auth';
 import ExportCart from '../../../app/controller/cart';
 import ExportGoods from '../../../app/controller/goods';
 import ExportHome from '../../../app/controller/home';
+import ExportOrder from '../../../app/controller/order';
 
 declare module 'egg' {
   interface IController {
@@ -15,5 +16,6 @@ declare module 'egg' {
     cart: ExportCart;
     goods: ExportGoods;
     home: ExportHome;
+    order: ExportOrder;
   }
 }

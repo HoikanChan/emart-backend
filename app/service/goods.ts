@@ -1,8 +1,6 @@
 import { Service } from 'egg';
-interface PaginationParams {
-  limit: number;
-  offset: number;
-}
+import { PaginationParams } from '../public/interface';
+
 export default class GoodsService extends Service {
   async getCategories() {
     const categories = await this.ctx.model.Category.findAll();

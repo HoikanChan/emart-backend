@@ -7,4 +7,9 @@ export interface Address {
   provinceName: string;
   cityName: string;
   detailInfo: string;
+  isDefault?: number;
+}
+export interface PaginationParams {
+  limit: number;
+  offset: number;
 }

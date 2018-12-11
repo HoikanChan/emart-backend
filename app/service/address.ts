@@ -1,5 +1,5 @@
 import { Service } from 'egg';
-import { Address } from '../interface/address';
+import { Address } from '../public/interface';
 
 export default class CartService extends Service {
   async list() {
@@ -17,19 +17,27 @@ export default class CartService extends Service {
     let newAddress = {};
     if (address.id === null) {
       delete address.id;
-      console.log(address);
       newAddress = await this.ctx.model.Address.create({
         userId,
         ...address,
       });
     } else {
-      newAddress = await this.ctx.model.Address.update(address, {
-        where: {
-          id: address.id,
-          userId,
-        },
-      });
+      const where = {
+        id: address.id,
+        userId,
+      };
+      await this.ctx.model.Address.update(address, { where });
+      newAddress = await this.ctx.model.Address.findOne(address, { where });
     }
     return this.ctx.returnSuccess('查询成功', newAddress);
+  }
+  async delete(id: number) {
+    const { userId } = this.ctx.session.currentUser;
+    const addressRecord = await this.ctx.model.Address.findOne({where: {
+      id,
+      userId,
+    }});
+    await addressRecord.destroy();
+    return this.ctx.returnSuccess('删除成功', {});
   }
 }
