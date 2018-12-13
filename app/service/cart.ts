@@ -87,8 +87,13 @@ export default class CartService extends Service {
       goodsTotalPrice += product.toJSON().number * product.product.toJSON().marketPrice;
       goodsTotalNumber += product.toJSON().number;
     });
-
+    const order = await this.ctx.service.order.create(
+      checkedGoodsList.map((i) => i.toJSON()),
+      orderTotalPrice,
+      goodsTotalNumber,
+    );
     return  this.ctx.returnSuccess('结算成功', {
+      orderId: order.id,
       checkedGoodsList,
       orderTotalPrice,
       goodsTotalPrice,
